@@ -25,7 +25,11 @@ Snowy采用APACHE LICENSE 2.0开源协议，您在使用过程中，需要注意
 package vip.xiaonuo.dm.dc.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
 import vip.xiaonuo.dm.dc.entity.DmSourceCompare;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * 数据库比较任务
@@ -34,4 +38,7 @@ import vip.xiaonuo.dm.dc.entity.DmSourceCompare;
  * @date 2021-07-07 15:08:48
  */
 public interface DmSourceCompareMapper extends BaseMapper<DmSourceCompare> {
+    List<String>  selectTableList();
+
+    List<Map<String,Object>> selectTableInfo(@Param("tableName")String tableName);
 }

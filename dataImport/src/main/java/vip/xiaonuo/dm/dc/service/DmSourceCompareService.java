@@ -25,10 +25,12 @@ Snowy采用APACHE LICENSE 2.0开源协议，您在使用过程中，需要注意
 package vip.xiaonuo.dm.dc.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.apache.ibatis.annotations.Param;
 import vip.xiaonuo.core.pojo.page.PageResult;
 import vip.xiaonuo.dm.dc.entity.DmSourceCompare;
 import vip.xiaonuo.dm.dc.param.DmSourceCompareParam;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 数据库比较任务service接口
@@ -93,4 +95,8 @@ public interface DmSourceCompareService extends IService<DmSourceCompare> {
     void start(Long id);
 
     void stop(Long id);
+
+    List<String>  selectTableList();
+
+    List<Map<String,Object>> selectTableInfo(@Param("tableName")String tableName);
 }

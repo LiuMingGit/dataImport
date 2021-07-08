@@ -25,6 +25,7 @@ Snowy采用APACHE LICENSE 2.0开源协议，您在使用过程中，需要注意
 package vip.xiaonuo.core;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -33,8 +34,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import vip.xiaonuo.SnowyApplication;
+import vip.xiaonuo.dm.dc.service.impl.DmSourceCompareServiceImpl;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 /**
@@ -52,6 +55,9 @@ public class BaseJunit {
     @Resource
     private WebApplicationContext webApplicationContext;
 
+    @Resource
+    private DmSourceCompareServiceImpl service;
+
     private MockMvc mockMvc;
 
     @Before
@@ -61,6 +67,14 @@ public class BaseJunit {
 
     @Before
     public void initDatabase() {
+    }
+
+    @Test
+    public void test(){
+        List<String> strings = service.selectTableList();
+        for (String string : strings) {
+            System.err.println(string);
+        }
     }
 
 

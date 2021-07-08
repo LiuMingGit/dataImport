@@ -44,6 +44,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 数据库比较任务service接口实现类
@@ -103,6 +104,10 @@ public class DmSourceCompareServiceImpl extends ServiceImpl<DmSourceCompareMappe
         DmSourceCompare compare = this.getById(id);
         compare.setWorkStatus("2");
         this.updateById(compare);
+        List<String> strings = this.selectTableList();
+        for (String string : strings) {
+            System.err.println(string);
+        }
     }
 
     @Override
@@ -110,6 +115,16 @@ public class DmSourceCompareServiceImpl extends ServiceImpl<DmSourceCompareMappe
         DmSourceCompare compare = this.getById(id);
         compare.setWorkStatus("4");
         this.updateById(compare);
+    }
+
+    @Override
+    public List<String> selectTableList() {
+        return this.baseMapper.selectTableList();
+    }
+
+    @Override
+    public List<Map<String, Object>> selectTableInfo(String tableName) {
+        return this.baseMapper.selectTableInfo(tableName);
     }
 
     /**

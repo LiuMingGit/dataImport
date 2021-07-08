@@ -22,6 +22,7 @@
     <modules>
         <module>snowy-base</module>
         <module>dataImport</module>
+        <module>ming-kettle</module>
     </modules>
 
     <properties>
