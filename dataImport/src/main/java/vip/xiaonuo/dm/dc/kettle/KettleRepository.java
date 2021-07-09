@@ -1,4 +1,4 @@
-package com.bsoft.kettle.repository;
+package vip.xiaonuo.dm.dc.kettle;
 
 import cn.hutool.extra.spring.SpringUtil;
 import cn.hutool.log.Log;
